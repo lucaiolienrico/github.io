@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Redirect…</title>
+<meta name="robots" content="noindex">
+<script>
+// =============================================
+//  ROOT OAUTH REDIRECT HELPER
+//  Supabase Auth dopo il callback Google ci porta qui (root del dominio)
+//  invece che su /prova/. Questo script rileva il ?code= e redirige a /prova/
+//  preservando tutti i parametri query.
+// =============================================
+(function () {
+  var params = window.location.search; // include il "?" iniziale se presente
+  var hash   = window.location.hash;   // include il "#" iniziale se presente
+  var target = '/prova/' + (params || '') + (hash || '');
+  // Usa replace per non sporcare la history del browser
+  window.location.replace(target);
+})();
+</script>
+</head>
+<body>
+<p>Redirect a InvestPro…</p>
+</body>
+</html>
